@@ -1,6 +1,6 @@
 /* ====== Fondo con overlay ====== */
 body {
-  background: url("../../img/fondo-registro.jpg") no-repeat center center/cover;
+  background: url("fondo-registro.jpg") no-repeat center center/cover;
   position: relative;
   margin: 0;
   height: 100vh;
