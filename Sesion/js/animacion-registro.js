@@ -1,38 +1,46 @@
-const passwordInput = document.getElementById("password");
 const koala = document.querySelector(".koala");
 const eyes = document.querySelectorAll(".eye");
-const togglePassword = document.getElementById("togglePassword");
 
-// Efecto normal cuando se enfoca el input de contraseña
-passwordInput.addEventListener("focus", () => {
-  koala.classList.add("cover-eyes");
-  eyes.forEach(eye => eye.classList.add("closed"));
-});
+// Función para agregar comportamiento a cada input de contraseña
+function setupPasswordToggle(inputId, toggleId) {
+  const input = document.getElementById(inputId);
+  const toggle = document.getElementById(toggleId);
 
-passwordInput.addEventListener("blur", () => {
-  koala.classList.remove("cover-eyes");
-  eyes.forEach(eye => eye.classList.remove("closed"));
-});
+  // Efecto cuando se enfoca
+  input.addEventListener("focus", () => {
+    koala.classList.add("cover-eyes");
+    eyes.forEach(eye => eye.classList.add("closed"));
+  });
 
-// Mostrar contraseña solo mientras se presiona el botón
-togglePassword.addEventListener("mousedown", () => {
-  passwordInput.type = "text"; // mostrar clave
-  koala.classList.remove("cover-eyes");
-  eyes.forEach(eye => eye.classList.remove("closed"));
-});
+  input.addEventListener("blur", () => {
+    koala.classList.remove("cover-eyes");
+    eyes.forEach(eye => eye.classList.remove("closed"));
+  });
 
-togglePassword.addEventListener("mouseup", () => {
-  passwordInput.type = "password"; // volver a ocultar clave
-  koala.classList.add("cover-eyes");
-  eyes.forEach(eye => eye.classList.add("closed"));
-});
+  // Mostrar contraseña mientras se presiona el botón
+  toggle.addEventListener("mousedown", () => {
+    input.focus();
+    input.type = "text";
+    koala.classList.remove("cover-eyes");
+    eyes.forEach(eye => eye.classList.remove("closed"));
+  });
 
-// Por si el usuario saca el mouse fuera del botón sin soltar
-togglePassword.addEventListener("mouseleave", () => {
-  passwordInput.type = "password";
-  koala.classList.add("cover-eyes");
-  eyes.forEach(eye => eye.classList.add("closed"));
-});
+  toggle.addEventListener("mouseup", () => {
+    input.type = "password";
+    koala.classList.add("cover-eyes");
+    eyes.forEach(eye => eye.classList.add("closed"));
+  });
+
+  toggle.addEventListener("mouseleave", () => {
+    input.type = "password";
+    koala.classList.add("cover-eyes");
+    eyes.forEach(eye => eye.classList.add("closed"));
+  });
+}
+
+// Aplicar a ambos inputs
+setupPasswordToggle("password", "togglePassword");
+setupPasswordToggle("confirmPassword", "toggleConfirmPassword");
 
 // Mensaje de confirmación al enviar el formulario
 document.getElementById("formRegistro").addEventListener("submit", (e) => {
