@@ -41,14 +41,3 @@ function setupPasswordToggle(inputId, toggleId) {
 // Aplicar a ambos inputs
 setupPasswordToggle("password", "togglePassword");
 setupPasswordToggle("confirmPassword", "toggleConfirmPassword");
-
-// Mensaje de confirmación al enviar el formulario
-document.getElementById("formRegistro").addEventListener("submit", (e) => {
-  e.preventDefault();
-  Swal.fire({
-    title: "¡Registro exitoso!",
-    text: "Tu cuenta ha sido creada",
-    icon: "success",
-    confirmButtonText: "OK"
-  });
-});

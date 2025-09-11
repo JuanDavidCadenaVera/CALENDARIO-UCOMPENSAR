@@ -5,7 +5,6 @@ document.getElementById("formRegistro").addEventListener("submit", async (e) => 
   const password = document.getElementById("password").value;
   const confirmPassword = document.getElementById("confirmPassword").value;
 
-  // Validar contraseñas
   if (password !== confirmPassword) {
     Swal.fire("Error", "Las contraseñas no coinciden", "error");
     return;
