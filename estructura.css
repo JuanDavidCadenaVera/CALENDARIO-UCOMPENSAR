@@ -302,3 +302,11 @@ button:hover, .btn:hover {
 .carrusel:hover .carrusel-items {
   animation-play-state: paused;
 }
+
+/* SECCION FINAL */ 
+.final {
+  margin: 0;
+  height: 80px;
+  background-color: #023047;
+  width: 100%;
+}
